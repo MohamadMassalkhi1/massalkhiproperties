@@ -1169,10 +1169,10 @@ const handleContactSubmit = async (e) => {
                 className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-600 focus:border-transparent"
               >
                 <option value="">Select a range</option>
-                <option value="under-500k">Under $500,000</option>
-                <option value="500k-750k">$500,000 - $750,000</option>
-                <option value="750k-1m">$750,000 - $1,000,000</option>
-                <option value="over-1m">Over $1,000,000</option>
+                <option value="under-250,000">Under $250,000</option>
+                <option value="250k-350k">$250,000 - $350,000</option>
+                <option value="350k-500k">$350,000 - $500,000</option>
+                <option value="500k+">Over $500,000</option>
               </select>
             </div>
 
