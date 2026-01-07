@@ -1140,7 +1140,7 @@ const handleContactSubmit = async (e) => {
               </select>
             </div>
 
-            <div>
+            {/* <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Preferred Project (Optional)
               </label>
@@ -1156,7 +1156,7 @@ const handleContactSubmit = async (e) => {
                 <option value="maple">Maple Grove Homes - Toronto</option>
                 <option value="any">Any Available Project</option>
               </select>
-            </div>
+            </div> */}
 
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">
