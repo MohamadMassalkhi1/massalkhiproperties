@@ -167,7 +167,7 @@ const MassalkhiWebsite = () => {
   e.preventDefault();
   
   try {
-    const response = await fetch('https://formspree.io/f/xjkvkqdb', {
+    const response = await fetch('https://formspree.io/f/mbdlnlbr', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -209,7 +209,7 @@ const handleContactSubmit = async (e) => {
   e.preventDefault();
   
   try {
-    const response = await fetch('https://formspree.io/f/xjkvkqdb', {
+    const response = await fetch('https://formspree.io/f/mbdlnlbr', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
