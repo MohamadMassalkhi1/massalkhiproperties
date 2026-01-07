@@ -163,19 +163,86 @@ const MassalkhiWebsite = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const subject = `${formData.interestType === 'buying' ? 'Buyer' : formData.interestType === 'investing' ? 'Investor' : 'General'} Inquiry - ${formData.name}`;
-    const body = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0APhone: ${formData.phone}%0D%0AInterest Type: ${formData.interestType}%0D%0APreferred Project: ${formData.project}%0D%0ABudget Range: ${formData.budget}%0D%0ATimeline: ${formData.timeline}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`;
-    window.location.href = `mailto:mohmassalkhi@gmail.com?subject=${subject}&body=${body}`;
-  };
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  
+  try {
+    const response = await fetch('https://formspree.io/f/xjkvkqdb', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        interestType: formData.interestType,
+        project: formData.project,
+        budget: formData.budget,
+        timeline: formData.timeline,
+        message: formData.message,
+        _subject: `${formData.interestType === 'buying' ? 'Buyer' : formData.interestType === 'investing' ? 'Investor' : 'General'} Inquiry - ${formData.name}`
+      }),
+    });
 
-  const handleContactSubmit = (e) => {
-    e.preventDefault();
-    const subject = `Contact Form - ${formData.interestType} - ${formData.name}`;
-    const body = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0APhone: ${formData.phone}%0D%0ASubject: ${formData.interestType}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`;
-    window.location.href = `mailto:mohmassalkhi@gmail.com?subject=${subject}&body=${body}`;
-  };
+    if (response.ok) {
+      alert('Thank you! Your interest has been submitted successfully.');
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        interestType: 'buying',
+        project: '',
+        budget: '',
+        timeline: '',
+        message: ''
+      });
+    } else {
+      alert('There was an error. Please try again.');
+    }
+  } catch (error) {
+    alert('Error submitting form. Please email us directly at info@massalkhiproperties.com');
+  }
+};
+
+const handleContactSubmit = async (e) => {
+  e.preventDefault();
+  
+  try {
+    const response = await fetch('https://formspree.io/f/xjkvkqdb', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        subject: formData.interestType,
+        message: formData.message,
+        _subject: `Contact Form - ${formData.interestType} - ${formData.name}`
+      }),
+    });
+
+    if (response.ok) {
+      alert('Thank you! Your message has been sent.');
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        interestType: 'buying',
+        project: '',
+        budget: '',
+        timeline: '',
+        message: ''
+      });
+    } else {
+      alert('There was an error. Please try again.');
+    }
+  } catch (error) {
+    alert('Error submitting form. Please email us directly at info@massalkhiproperties.com');
+  }
+};
 
   const renderHome = () => (
     <div className="space-y-0">
@@ -854,8 +921,8 @@ const MassalkhiWebsite = () => {
                 </div>
                 <div>
                   <div className="font-semibold text-gray-900 mb-1">Email</div>
-                  <a href="mailto:mohmassalkhi@gmail.com" className="text-yellow-600 hover:text-yellow-700 font-medium">
-                    mohmassalkhi@gmail.com
+                  <a href="mailto:info@massalkhiproperties.com" className="text-yellow-600 hover:text-yellow-700 font-medium">
+                    info@massalkhiproperties.com
                   </a>
                   <p className="text-sm text-gray-600 mt-1">We respond within 24 hours</p>
                 </div>
@@ -1497,7 +1564,7 @@ const MassalkhiWebsite = () => {
             <div>
               <h4 className="font-bold text-lg mb-4 text-yellow-500">Contact</h4>
               <div className="space-y-2 text-sm text-gray-400">
-                <p>mohmassalkhi@gmail.com</p>
+                <p>info@massalkhiproperties.com</p>
                 <p>+1 (873) 355-0860</p>
                 <p className="pt-4">
                   {/* [Address]<br /> */}
